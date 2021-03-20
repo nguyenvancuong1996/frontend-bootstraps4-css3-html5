@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container m-5">
+        <form id="myForm" class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <h1>Personal Info</h1>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                        <div class="is-valid valid-feedback">
+                            success !!!!
+                        </div>
+                        <div class="is-invalid invalid-feedback">
+                            Must Character!~~~~
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputLastName">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+
+                        <div class="invalid-feedback">
+                            Must Character!~~~~
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <div class="invalid-feedback">
+                            Must Fill Email!~~~~
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">Phone</label>
+                        <input type="number" class="form-control" id="inputPhone" placeholder="Phone">
+
+                        <div class="invalid-feedback">
+                            Must 10 Digits!~~~~
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+
+                    <div class="invalid-feedback">
+                        Must Character!~~~~
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="New York">
+
+                        <div class="invalid-feedback">
+                            Must Character!~~~~
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                            <option selected value="0">Choose...</option>
+                            <option value="1">Texas</option>
+                            <option value="2">Washington</option>
+                        </select>
+
+                        <div class="invalid-feedback">
+                            Vui long chon truong State!!!!
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip Code</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Check me out
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <h1>Payment Info</h1>
+                </div>
+                <div class="form-group">
+                    <label for="inputNameCard">Name On Card</label>
+                    <input type="text" class="form-control" id="inputNameCard" placeholder="John More Doe">
+
+                    <div class="invalid-feedback">
+                        Must Character!~~~~
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCreditCard">Credit Card Number</label>
+                    <input type="text" class="form-control" maxlength="19" id="inputCreditCard"
+                        placeholder="1234-1234-1234-1234">
+                    <div class="invalid-feedback">
+                        Must Fill Credit Card (xxxx-xxxx-xxxx-xxxx)!
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputMonth">Exp Month</label>
+                        <input type="text" class="form-control" id="inputMonth" maxlength="2">
+                        <div class="invalid-feedback">
+                            Must Fill Month!
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputYear">Exp Year</label>
+                        <input type="text" class="form-control" id="inputYear" maxlength="4">
+                        <div class="invalid-feedback">
+                            Must Fill Year and greater 2000!
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCVV">CVV</label>
+                        <input type="text" class="form-control" id="inputCVV" maxlength="3">
+                        <div class="invalid-feedback">
+                            Must Fill CVV!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group d-flex flex-wrap">
+                    <label for="inputCreditCard">Accepted Card</label>
+                    <span class="form-control p-0 border-0">
+                        <i class="fab fa-cc-visa fa-2x text-primary"></i>
+                        <i class="fab fa-cc-mastercard fa-2x text-danger"></i>
+                        <i class="fab fa-cc-discover fa-2x text-warning"></i>
+                    </span>
+                </div>
+            </div>
+            <button id="submit" type="submit" class="btn btn-primary" disabled>Sign in</button>
+        </form>
+    </div>
+
+    <style>
+        .highlight {
+            border: 2px solid gray;
+            border-radius: 5px;
+        }
+    </style>
+
+
+    <script>
+        $(document).ready(function (e) {
+            var regexInputString = "^[a-zA-Z]+$";
+            var regexPhoneTenDigit = "^\\d{10}$";
+            var regexZipCode = "^\\d{5}$";
+            var regexCreditCard =
+                "[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"; //regex credit card xxxx-xxxx-xxxx-xxxx
+            //visa card: first number is 4 
+            // discovery: begins with 6011 
+            //master card: 51 || 55 
+            var regexVisa = "^4";
+            var regexDiscovery = "^6011";
+            var regexMasterCard = "^51|55";
+
+            var regexCVV = "^\\d{3}$"; //regex digit 3 numbers
+            var regexYear = "^(2\\d{3})$"; //regex year > 2000
+            var regexMonth = "^(0[1-9]|1[0-2])$"; //regex month
+            var regexEmail =
+            "^[\\w]+@fsoft.com.vn$"; //Validate email đuôi fsoft.com.vn  //^[\w]+@[a-zA-Z.]*(\.[a-zA-Z]{2,3})+$
+
+            //"^(199\d|200\d|2010)$"   1990-2010
+
+            //Disable Sign-in button
+
+
+            function disableSignIn() {
+                // $("#gridCheck").click(function () {
+                //     var checked = $("#gridCheck").attr("checked");
+                //     var attr = $("#gridCheck").attr('checked');
+
+                //     // For some browsers, `attr` is undefined; for others,
+                //     // `attr` is false.  Check for both.
+
+                //     if("#gridCheck:checked") {
+                //         //$("#submit").removeAttr("disabled")
+                //         //console.log("ac")
+                //         $("#submit").attr("disabled","true");
+                //     } else {
+                //         console.log("acvb")
+                //         $("#submit").attr("disabled");
+                //     }
+
+                //     // console.log(checked);
+                //     // if (checked == "checked") {
+                //     //     //$("#submit").removeAttr("disabled");
+                //     // } else {
+                //     //     console.log("abc");
+                //     //     $("#gridCheck").attr("checked");
+                //     //     $("#submit").attr("disabled", "true");
+                //     // }
+                // })
+
+                if ($("#gridCheck").prop("checked")) {
+                    //$("#submit").removeAttr("disabled")
+                    console.log("ac")
+                    $("#submit").attr("disabled", "false");
+                } else {
+                    // console.log("acvb")
+                    $("#submit").attr("disabled", "true");
+                }
+
+            }
+            ///--------
+
+            //disableSignIn();
+            addSubtract("#inputCreditCard");
+            checkCreditCard("#inputCreditCard");
+            checkState("#inputState");
+            checkString("#inputFirstName");
+            checkString("#inputLastName");
+            checkString("#inputNameCard");
+            checkString("#address");
+            checkString("#inputCity");
+            checkPhone("#inputPhone");
+            checkZipCode("#inputZip");
+            checkYear("#inputYear");
+            checkMonth("#inputMonth");
+            checkCVV("#inputCVV");
+            checkEmail("#inputEmail");
+            checkString("#inputAddress");
+
+            /////=======================/////
+            function addSubtract(element) {
+                $(element).keypress(function () {
+                    var x = $(element).val();
+                    switch (x.length) {
+                        case 4:
+                            $(element).val(x + '-');
+                            break;
+
+                        case 9:
+                            $(element).val(x + '-');
+                            break;
+
+                        case 14:
+                            $(element).val(x + '-');
+                            break;
+                    }
+                });
+            }
+
+            /////=======================/////
+            function checkCreditCard() {
+                $("#inputCreditCard").blur(function () {
+                    var x = $("#inputCreditCard").val();
+                    var check = x.match(regexCreditCard) !== null;
+
+                    //========card type
+                    if (x.match(regexMasterCard)) {
+                        $(".fa-cc-mastercard").addClass("highlight");
+                    } else if (x.match(regexDiscovery)) {
+                        $(".fa-cc-discover").addClass("highlight");
+                    } else if (x.match(regexVisa)) {
+                        $(".fa-cc-visa").addClass("highlight");
+                    }
+
+                    //========
+
+                    if (!check) {
+                        $("#inputCreditCard").attr("class", "form-control is-invalid");
+                    } else {
+                        $("#inputCreditCard").attr("class", "form-control is-valid");
+                    }
+                    return check;
+                });
+            }
+
+
+
+
+            /////=======================/////
+            function checkString(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexInputString) === null || x === "") {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = false;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkEmail(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexEmail) === null) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkPhone(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexPhoneTenDigit) == null) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkZipCode(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexZipCode) == null) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkCVV(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexCVV) == null) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkYear(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexYear) == null) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkMonth(element) {
+                $(element).blur(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (x.match(regexMonth) == null) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+            /////=======================/////
+            function checkState(element) {
+                $(element).change(function () {
+                    var x = $(element).val();
+                    var check;
+                    if (parseInt(x) === 0) {
+                        $(element).attr("class", "form-control is-invalid");
+                        check = false;
+                    } else {
+                        $(element).attr("class", "form-control is-valid");
+                        check = true;
+                    }
+                    return check;
+                });
+            }
+
+
+            $("#myForm").submit(function (e) {
+                e.preventDefault();
+                var element = ["inputEmail", "inputAddress", "inputYear", "inputMonth", "inputNameCard",
+                    "inputLastName", "inputFirstName", "inputCreditCard", "inputState", "inputCVV",
+                    "inputZip", "inputPhone", "inputCity"
+                ];
+                element.forEach(e => {
+                    if ($("#" + e).hasClass("is-valid")) {
+                        $("#" + e).attr("class", "form-control is-valid");
+                    } else {
+                        $("#" + e).attr("class", "form-control is-invalid");
+                    }
+                });
+
+            })
+
+            $("#gridCheck").click(function (e) {
+                if ($(this).is(':checked')) {
+                    $("#submit").prop("disabled", false);
+                } else {
+                    $("#submit").prop("disabled", true);
+                }
+            });
+        });
+    </script>
+
+
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8.1</title>
+
+    <link rel="stylesheet" href="8.1.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <th width="30%">Hinh Anh</th>
+                    <th width="10%">Ten san pham</th>
+                    <th width="10%">Ma san pham</th>
+                    <th width="10%">Gia san pham</th>
+                    <th width="30%">So luong san pham</th>
+                    <th width="10%">Thanh tien</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img class="img-fluid" src="img/taylor.jpg">
+                        </td>
+                        <td>Girl Taylor</td>
+                        <td>NV001</td>
+                        <td>
+                            $ 200
+                            <input type="hidden" value="200" id="price">
+                        </td>
+                        <td>
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col-3 ">
+                                    <button class="btn btn-sm btn-danger" id="removeItem">-</button>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control d-flex justify-content-center align-items-center text-center" name="quantity" id="quantityItem" value="1">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn btn-sm btn-info" id="addItem">+</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            Thanh tien :
+                            <p id="total">200 $</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <script src="jquery/jquery-3.5.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="fontawesome/js/all.js"></script>
+
+
+    <script>
+        $("#addItem").on('click', function(event) {
+            var quantity = parseInt($("#quantityItem").val()) + 1;
+            $("#quantityItem").val(quantity);
+            calculateTotal();
+        });
+        $("#removeItem").on('click', function(event) {
+            var quantity = parseInt($("#quantityItem").val()) - 1;
+            if (quantity >= 1) {
+                $("#quantityItem").val(quantity);
+                calculateTotal();
+            } else {
+                alert('Số lượng sản phẩm cần mua tối thiểu là 1');
+            }
+
+        });
+        $("#quantityItem").change(function(event) {
+            calculateTotal();
+        });
+
+        function calculateTotal() {
+            var total = parseInt($("#quantityItem").val()) * parseInt($("#price").val());
+            $("#total").text(total + "$");
+        };
+    </script>
+</body>
+
+</html>

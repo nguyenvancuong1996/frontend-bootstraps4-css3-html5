@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.3</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        /* html{
+            font-size: ;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="mainForm">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Personal Info</h3>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="firstName" value="">
+
+                            <div id="firstNameInvalid" style="color: red;"></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="lastName" value="">
+
+                            <div id="firstNameInvalid" style="color: red;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="email" value="">
+
+                            <div id="emailInvalid" style="color: red;"></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Phone</label>
+                            <input type="text" class="form-control" id="phone" placeholder="phone" value="">
+
+                            <div id="phoneInvalid" style="color: red;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                        <div id="addressInvalid" style="color: red;"></div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-5 mb-3">
+                            <label for="country">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="city">
+                            <div id="cityInvalid" style="color: red;"></div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state">State</label>
+                            <select class="custom-select d-block w-100" id="state">
+                            <!-- <option value="">Choose...</option> -->
+                            <option value="0">Choose...</option>
+                            <option value="1">Da Nang</option>
+                            <option value="2">Quang Nam</option>
+                            </select>
+                            <div id="stateInvalid" style="color: red;"></div>
+                      
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" id="zip" placeholder="">
+                            <div id="zipInvalid" style="color: red;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="custom-control custom-radio">
+                            <input id="paypal" name="paymentMethod" type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="paypal">Check me out</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg" id="btmSubmit" type="submit">Sign in</button>
+
+
+                </div>
+
+                <div class="col-6">
+                    <h3>Payment Info</h3>
+                    <div class="form-group">
+                        <label for="nameoncard">Name On Card</label>
+                        <input type="text" class="form-control" id="namecard" placeholder="name on card" value="">
+                        <div id="cardNameInvalid" style="color: red;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nameoncard2">Credit card Number</label>
+                        <input type="text" class="form-control" id="nameoncard2" placeholder="1111-2222-3333-4444" maxlength="19" value="">
+                        <div id="creditInvalid" style="color: red;"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="country">Exp Month</label>
+                            <input type="number" class="form-control" id="expmonth" placeholder="expmonth">
+
+                            <div id="monthInvalid" style="color: red;"></div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="country">Exp Year</label>
+                            <input type="text" class="form-control" id="expyear" placeholder="expyear">
+
+                            <div id="expyearInvalid" style="color: red;"></div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="country">CVV</label>
+                            <input type="text" class="form-control" id="cvv" placeholder="cvv">
+                            <div id="cvvInvalid" style="color: red;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Accepted Cards</label>
+                        <div class="form-control p-0 border-0">
+                            <i class="fab fa-cc-visa" style="font-size: 30px; color: blue;"></i>
+                            <i class="fab fa-cc-mastercard" style="font-size: 30px; color: red; margin-left: 12px;"></i>
+                            <i class="fab fa-cc-discover" style="font-size: 30px; color: yellow; margin-left: 12px;;"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </form>
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2020 FPT software</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+    </div>
+    <script src="8.3.js"></script>
+    <script src="Jquery/jquery-3.5.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="fontawesome-free-5.15.1-web/js/all.js"></script>
+
+    <script>
+        ////////////*****Name*********//////////
+
+        $("#mainForm").on('submit', function(event) {
+            event.preventDefault();
+            if ($("#paypal").is(":checked")) {
+
+                event.preventDefault();
+
+                var firstName = $("#firstName").val();
+                if (checkName(firstName) && firstName) {
+                    $("#firstName").prop("class", "form-control is-valid");
+                    $("#firstNameInvalid").html('');
+                } else {
+                    $("#firstName").prop("class", "form-control is-invalid");
+                    $("#firstNameInvalid").html('hay nhap ten cho dung');
+                }
+
+                var lastName = $("#lastName").val();
+                if (checkName(lastName) && lastName) {
+                    $("#lastName").prop("class", "form-control is-valid");
+                    $("#firstNameInvalid").html('');
+                } else {
+                    $("#lastName").prop("class", "form-control is-invalid");
+                    $("#firstNameInvalid").html('hay nhap ten cho dung');
+                }
+
+                ////////////////////////*******Email**********///////////////////
+
+                var email = $("#email").val();
+                if (checkEmail(email) && email) {
+                    $("#email").prop("class", "form-control is-valid");
+                    $("#emailInvalid").html('');
+                } else {
+                    $("#email").prop("class", "form-control is-invalid");
+                    $("#emailInvalid").html('Nhap sai email');
+                }
+
+                ////////////////////////*****Phone********///////////////////
+
+                var phone = $("#phone").val();
+                if (checkPhone(phone) && phone) {
+                    $("#phone").prop("class", "form-control is-valid");
+                    $("#phoneInvalid").html('');
+                } else {
+                    $("#phone").prop("class", "form-control is-invalid");
+                    $("#phoneInvalid").html('Nhap sai :');
+                }
+
+                ////////////////////////*****Address********///////////////////
+
+                var address = $("#address").val();
+                if (checkAddress(address) && address) {
+                    $("#address").prop("class", "form-control is-valid");
+                    $("#addressInvalid").html('');
+                } else {
+                    $("#address").prop("class", "form-control is-invalid");
+                    $("#addressInvalid").html('Nhap sai dia chi :');
+                }
+
+                ////////////////////////*****City********///////////////////
+
+                var city = $("#city").val();
+                if (checkCity(city) && city) {
+                    $("#city").prop("class", "form-control is-valid");
+                    $("#cityInvalid").html('');
+                } else {
+                    $("#city").prop("class", "form-control is-invalid");
+                    $("#cityInvalid").html('Nhap sai dia chi :');
+                }
+
+                ////////////////////////*****Zip********///////////////////
+
+                var zip = $("#zip").val();
+                if (checkZip(zip) && zip) {
+                    $("#zip").prop("class", "form-control is-valid");
+                    $("#zipInvalid").html('');
+                } else {
+                    $("#zip").prop("class", "form-control is-invalid");
+                    $("#zipInvalid").html('Nhap sai zip :');
+                }
+
+                ////////////////////////*****Paypal********///////////////////
+
+                ////////////////////////*****CardName********///////////////////
+
+                var cardName = $("#namecard").val();
+                if (checkCardName(cardName) && cardName) {
+                    $("#namecard").prop("class", "form-control is-valid");
+                    $("#cardNameInvalid").html('');
+                } else {
+                    $("#namecard").prop("class", "form-control is-invalid");
+                    $("#cardNameInvalid").html('Nhap sai cardName :');
+                }
+
+                ////////////////////////*****CheckCredit********///////////////////
+
+                var cardName = $("#nameoncard2").val();
+                if (checkCard(cardName) && cardName) {
+                    $("#nameoncard2").prop("class", "form-control is-valid");
+                    $("#creditInvalid").html('');
+                } else {
+                    $("#nameoncard2").prop("class", "form-control is-invalid");
+                    $("#creditInvalid").html('Nhap sai credit card');
+                }
+
+                /////////////////////****Month*****////////////////////////////
+
+                var numberMonth = $("#expmonth").val();
+                if (checkMonth(numberMonth) && numberMonth) {
+                    $("#expmonth").prop("class", "form-control is-valid");
+                    $("#monthInvalid").html('');
+                } else {
+                    $("#expmonth").prop("class", "form-control is-invalid");
+                    $("#monthInvalid").html('Nhap sai month');
+                }
+
+                /////////////////////****Year*****////////////////////////////
+
+                var numberYear = $("#expyear").val();
+                if (checkYear(numberYear) && numberYear) {
+                    $("#expyear").prop("class", "form-control is-valid");
+                    $("#expyearInvalid").html('');
+                } else {
+                    $("#expyear").prop("class", "form-control is-invalid");
+                    $("#expyearInvalid").html('Nhap sai year');
+                }
+
+                /////////////////////****Choose*****////////////////////////////
+
+                var checkChoose = $("#state").val();
+                if ((checkChoose != "0") && checkChoose) {
+                    $("#state").prop("class", "form-control is-valid");
+                    $("#stateInvalid").html('');
+                } else {
+                    $("#state").prop("class", "form-control is-invalid");
+                    $("#stateInvalid").html('Vui long chon');
+                }
+
+                /////////////////////****CVV*****////////////////////////////
+
+                var cvv = $("#cvv").val();
+                if (checkCvv(cvv) && cvv) {
+                    $("#cvv").prop("class", "form-control is-valid");
+                    $("#cvvInvalid").html('');
+                } else {
+                    $("#cvv").prop("class", "form-control is-invalid");
+                    $("#cvvInvalid").html('Nhap sai cvv');
+                }
+
+            } else {
+                alert("phai chon");
+            }
+        });
+
+
+        ////////////////// Check validator///////////////////////////////////
+        addSubtract('#nameoncard2');
+
+        function checkName(str) {
+            var pattern = /^[a-zA-Z]*$/;
+            var result = pattern.test(str);
+            return result;
+        }
+
+        function checkEmail(str) {
+            var patternEmail = /^[a-zA-Z\s]+[a-zA-Z]{2,30}$/;
+            var result = patternEmail.test(str);
+            return result;
+        }
+
+        function checkPhone(str) {
+            var patternPhone = /0[0-9]{9}$/;
+            var result = patternPhone.test(str);
+            return result;
+        }
+
+        function checkAddress(str) {
+            var address = /^[a-zA-Z]*$/;
+            var result = address.test(str);
+            return result;
+        }
+
+        function checkCity(str) {
+            var city = /^[a-zA-Z]*$/;
+            var result = city.test(str);
+            return result;
+        }
+
+        function checkZip(str) {
+            var zip = /^\d{5}$/;
+            var result = zip.test(str);
+            return result;
+        }
+
+        function checkCardName(str) {
+            var city = /^[a-zA-Z]*$/;
+            var result = city.test(str);
+            return result;
+        }
+
+        function checkMonth(a) {
+            if (!isNaN(a) && parseInt(a) <= 12 && parseInt(a) > 0) {
+                return true;
+            }
+        }
+
+        function checkYear(a) {
+            if (!isNaN(a) && parseInt(a) <= 2020 && parseInt(a) > 2000) {
+                return true;
+            }
+        }
+
+        function checkCvv(a) {
+            if (!isNaN(a) && parseInt(a) <= 999 && parseInt(a) > 100) {
+                return true;
+            }
+        }
+
+        function checkCard(e) {
+            var creditCard = /[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/
+            var result = creditCard.test(e);
+            return result;
+        }
+        function addSubtract(element) {
+            $(element).keypress(function() {
+                var x = $(element).val();
+                switch (x.length) {
+                    case 4:
+                        $(element).val(x + '-');
+                        break;
+
+                    case 9:
+                        $(element).val(x + '-');
+                        break;
+
+                    case 14:
+                        $(element).val(x + '-');
+                        break;
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

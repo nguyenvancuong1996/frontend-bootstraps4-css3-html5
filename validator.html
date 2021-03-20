@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+ <style>
+     td{
+         height: 50px;
+     }
+ </style>
+<body>
+    <!-- <form action="">
+        <input type="date" id="ngay" onblur="getdate();">
+        <input type="datetime-local" value="" id="timeden">
+        <input type="datetime-local" value="" id="timedi" onblur="time();">
+    </form> -->
+
+    <body>
+        <form style="height: 500px; width: 600px;margin:  0 auto;" id="myform">
+            <div class="form-group">
+                <label for="">name</label>
+                <input type="text" name="" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="namee" style="color: red;"></small>
+            </div>
+            <div class="form-group">
+                <label for="">sdt</label>
+                <input type="text" name="" id="sdt" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="sdte" style="color: red;"></small>
+            </div>
+            <div class="form-group">
+                <label for="">dia chi</label>
+                <input type="text" name="" id="diachi" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="diachie" style="color: red;"></small>
+            </div>
+            <div class="form-group">
+              <label for="">soluong</label>
+              <select class="form-group" name="" id="soluong">
+                <option value="0">chosse me </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <small id="soluonge" style="color: red;"></small>
+            </div>
+            <div class="form-group">
+                <label for="">gmail</label>
+                <input type="text" name="" id="gmail" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="gmaile" style="color: red;"></small>
+            </div>
+            <div class="form-group">
+                <label for="">tuoi</label>
+                <input type="text" name="" id="tuoi" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="tuoie" style="color: red;"></small>
+            </div>
+
+            <input type="checkbox" id="checkme" name="vehicle1" value="Bike">
+            <label for="vehicle1">checkme</label><br>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="margin-top: 12px;">Submit</button>
+            </div>
+        </form>
+
+        <table class="table table-borderr" style="width: 800px;margin: 0 auto;display: none; margin-top: 100px;">
+            <thead>
+                <tr>
+                    <th >name</th>
+                    <th>sdt</th>
+                    <th>dia chi</th>
+                    <th>gmail</th>
+                    <th>tuoi</th>
+                    <th>so luong</th>
+                    <th>action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+             <!-- <tr> tuong duong vs 1 dong 
+                 <rd></rd>
+                 <rd></rd>
+                 <rd></rd>
+                 <rd></rd>
+                 <rd></rd>
+                 <rd></rd>
+                 <rd></rd>
+             </tr> -->
+            </tbody>
+        </table>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function validatestring(a) {
+                var validate = /^[a-zA-Z\s]+$/;
+                return validate.test(a);
+            }
+
+            function validatesdt(a) {
+                var validate = /^((09)|(08))[0-9]{8}$/;
+                return validate.test(a);
+            }
+
+            function validateso(a) {
+                if (isNaN(a)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function validategmail(a) {
+                var validate = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]{2,})+$/
+                return validate.test(a);
+            }
+
+            function checkname() {
+                if ($("#name").val() != "" && validatestring($("#name").val())) {
+                    $("#namee").text("")
+                    return true;
+                } else {
+                    $("#namee").text("Name errer !")
+                    return false;
+                }
+            }
+
+            function checktuoi() {
+                if ($("#tuoi").val() != "" && validateso($("#tuoi").val())) {
+                    $("#tuoie").text("")
+                    return true;
+                } else {
+                    $("#tuoie").text("tuoi errer !")
+                    return false;
+                }
+            }
+
+            function checksdt() {
+                if ($("#sdt").val() != "" && validatesdt($("#sdt").val())) {
+                    $("#sdte").text("")
+                    return true;
+                } else {
+                    $("#sdte").text("sdt errer !")
+                    return false;
+                }
+            }
+
+            function checkdiachi() {
+                if ($("#diachi").val() != "" && validatestring($("#diachi").val())) {
+                    $("#diachie").text("")
+                    return true;
+                } else {
+                    $("#diachie").text("dia chi errer !")
+                    return false;
+                }
+            }
+
+            function checkgmail() {
+                if ($("#gmail").val() != "" && validategmail($("#gmail").val())) {
+                   $("#gmaile").text("")
+                    return true;
+                } else {
+                    $("#gmaile").text("gmail  errer !")
+                    return false;
+                }
+            }
+
+            function checksoluong() {
+                if ($("#soluong").val() != "0") {
+                    $("#soluonge").text("")
+                    return true;
+                } else {
+                    $("#soluonge").text("soluong  errer !")
+                    return false;
+                }
+            }
+            function remote1(row){
+                row.remove();
+            }
+
+            $("#myform").on('submit', function(even) {
+                even.preventDefault();
+                if ($('#checkme').is(':checked')) {
+                    var name = checkname();
+                    var tuoi = checktuoi();
+                    var sdt = checksdt();
+                    var soluong = checksoluong();
+                    var gmail = checkgmail();
+                    var diachi = checkdiachi();
+                    if (name && tuoi && sdt && soluong && gmail && diachi) {
+                        var name = $("#name").val()
+                        var tuoi1 = $("#tuoi").val()
+                        var sdt = $("#sdt").val()
+                        var diachi = $("#diachi").val()
+                        var gmail = $("#gmail").val()
+                        var soluong1 = $("#soluong").val()
+                        $(".table").css('display', 'block');
+                        $('tbody').append('<tr onmousedown="remote1(this);"><td>' + name + '</td><td>' + sdt + '</td><td>' + diachi + '</td><td>' + gmail + '</td><td>' + tuoi1 + '</td> <td>' + soluong1 + '</td><td><button type="button" class="btn btn-primary">delete</button></td></tr>')
+                    }
+                } else {
+                    alert("Please check me !!");
+                }
+
+            })
+        </script>
+
+    </body>
+
+
+</html>
